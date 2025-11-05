@@ -1,14 +1,35 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+pub fn fmt_size(size: u64) -> String {
+    if size == 0 {
+        return "0B".to_string();
     }
+
+    let prefixes = ["PiB", "TiB", "GiB", "MiB", "KiB", "Bytes"];
+    let mut base = 1;
+    let counts: Vec<u64> = (0..prefixes.len())
+        .map(|_| {
+            let mut size = size;
+            size %= base * 1024;
+            size /= base;
+            base *= 1024;
+            size
+        })
+        .collect();
+
+    let pairs = counts
+        .iter()
+        .rev()
+        .enumerate()
+        //.skip_while(|p| *p.1 == 0)
+        .filter(|p| *p.1 > 0)
+        .map(|(i, v)| format!("{}{}", v, prefixes[i]));
+
+    /*
+    format!(
+        "{} ({} Bytes)",
+        pairs.into_iter().collect::<Vec<_>>().join("."),
+        size
+    )
+    */
+    format!("{}", pairs.into_iter().collect::<Vec<_>>().join(" + "),)
 }
+
