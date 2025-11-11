@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "monke-util"
+name = "monke"
 version = "0.1.0"
