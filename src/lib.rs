@@ -1,3 +1,4 @@
+//! Shared utilities for **monke** systems
 pub fn fmt_size(size: u64) -> String {
     if size == 0 {
         return "0B".to_string();
