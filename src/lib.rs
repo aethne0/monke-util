@@ -1,12 +1,12 @@
 //! Shared utilities for **monke** systems
-pub fn fmt_size(size: u64) -> String {
+pub fn fmt_size(size: usize) -> String {
     if size == 0 {
         return "0B".to_string();
     }
 
     let prefixes = ["PiB", "TiB", "GiB", "MiB", "KiB", "Bytes"];
     let mut base = 1;
-    let counts: Vec<u64> = (0..prefixes.len())
+    let counts: Vec<usize> = (0..prefixes.len())
         .map(|_| {
             let mut size = size;
             size %= base * 1024;
@@ -68,7 +68,6 @@ macro_rules! TiB {
         $x * 1024 * 1024 * 1024 * 1024
     };
 }
-
 
 #[macro_export]
 macro_rules! KB {
