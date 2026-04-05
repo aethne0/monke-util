@@ -68,3 +68,32 @@ macro_rules! TiB {
         $x * 1024 * 1024 * 1024 * 1024
     };
 }
+
+
+#[macro_export]
+macro_rules! KB {
+    ($x:expr) => {
+        $x * 1000
+    };
+}
+
+#[macro_export]
+macro_rules! MB {
+    ($x:expr) => {
+        $x * 1000 * 1000
+    };
+}
+
+#[macro_export]
+macro_rules! GB {
+    ($x:expr) => {
+        $x * 1000 * 1000 * 1000
+    };
+}
+
+#[macro_export]
+macro_rules! TB {
+    ($x:expr) => {
+        $x * 1000 * 1000 * 1000 * 1000
+    };
+}
